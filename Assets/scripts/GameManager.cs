@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject arrowprefab;
     float span = 1.0f;
     float delta = 0;
+    public GameObject hpGauge;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,9 @@ public class GameManager : MonoBehaviour
             int px = Random.Range(-6, 7);
             Instantiate(arrowprefab, new Vector3(px, 7, 0), Quaternion.identity);
         }
+    }
+    public void DecreaseHp()
+    {
+        hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
     }
 }
