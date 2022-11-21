@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
         {
             transform.Translate(3, 0, 0); // ©¹¥k²¾°Ê¡u3¡v
         }
-
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameManager.GetComponent<GameManager>().DecreaseHp();
     }
 }
