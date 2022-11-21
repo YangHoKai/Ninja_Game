@@ -24,6 +24,15 @@ public class Player : MonoBehaviour
         {
             transform.Translate(3, 0, 0); // ©¹¥k²¾°Ê¡u3¡v
         }
+        
+    }
+    public void LButtonDown()
+    {
+        transform.Translate(-3, 0, 0);
+    }
+    public void RButtonDown()
+    {
+        transform.Translate(3, 0, 0);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
