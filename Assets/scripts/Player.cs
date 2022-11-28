@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             transform.Translate(-3, 0, 0); // 往左移動「3」
+            GetComponent<AudioSource>().Play();
         }
 
         // 點擊左方向鈕時
         if (Input.GetKeyDown(KeyCode.D))
         {
             transform.Translate(3, 0, 0); // 往右移動「3」
+            GetComponent<AudioSource>().Play();
         }
         
     }
