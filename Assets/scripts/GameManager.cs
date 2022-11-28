@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,13 +10,16 @@ public class GameManager : MonoBehaviour
     float span = 1.0f;
     float delta = 0;
     public GameObject hpGauge;
+    int blood = 10;
 
-    int score;
+    public int score;
     public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "だ计: 0 だ";
+        score = 0;
+        blood = 10;
+        scoreText.text = "だ计:" + score+" だ";
     }
 
     // Update is called once per frame
@@ -33,12 +37,17 @@ public class GameManager : MonoBehaviour
     public void DecreaseHp()
     {
         hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+        blood -= 1;
+        if (blood <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
     }
     public void IncreaseScore(int _score)
     {
         score += _score;
-        scoreText.text = "だ计" + score + " だ";
-    }
+        scoreText.text = "だ计:" + score + " だ";
 
+    }
 }
