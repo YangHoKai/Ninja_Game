@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject arrowprefab;
+
+    public GameObject catfood;
     //float span = 1.0f;
     //float delta = 0;
     public GameObject hpGauge;
-    int blood = 10;
+    public int blood = 10;
 
     public int score;
     public Text scoreText;
@@ -21,11 +23,17 @@ public class GameManager : MonoBehaviour
         blood = 10;
         scoreText.text = "¤À¼Æ:" + score+" ¤À";
         InvokeRepeating("ArrowShot", 0, 1.0f);
+        InvokeRepeating("CatFood", 4.5f, 5.0f);
     }
 
     void ArrowShot()
     {
         Instantiate(arrowprefab, new Vector3(Random.Range(-6, 7), 7, 0), Quaternion.identity);
+    }
+
+    void CatFood()
+    {
+        Instantiate(catfood, new Vector3(Random.Range(-6, 7), 7, 0), Quaternion.identity);
     }
     // Update is called once per frame
     void Update()
@@ -48,6 +56,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
+    }
+    public void AddHp()
+    {
+        hpGauge.GetComponent<Image>().fillAmount += 0.1f;
+        blood += 1;
     }
     public void IncreaseScore(int _score)
     {
