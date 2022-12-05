@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     {
         hpGauge.GetComponent<Image>().fillAmount += 0.1f;
         blood += 1;
+        if (blood > 10)
+            blood = 10;
     }
     public void IncreaseScore(int _score)
     {
