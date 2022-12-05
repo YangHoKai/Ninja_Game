@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject arrowprefab;
-    float span = 1.0f;
-    float delta = 0;
+    //float span = 1.0f;
+    //float delta = 0;
     public GameObject hpGauge;
     int blood = 10;
 
@@ -20,11 +20,16 @@ public class GameManager : MonoBehaviour
         score = 0;
         blood = 10;
         scoreText.text = "¤À¼Æ:" + score+" ¤À";
+        InvokeRepeating("ArrowShot", 0, 1.0f);
     }
 
+    void ArrowShot()
+    {
+        Instantiate(arrowprefab, new Vector3(Random.Range(-6, 7), 7, 0), Quaternion.identity);
+    }
     // Update is called once per frame
     void Update()
-    {
+    {   /*
         delta += Time.deltaTime;
         if(delta>span)
         {
@@ -32,7 +37,7 @@ public class GameManager : MonoBehaviour
             int px = Random.Range(-6, 7);
             Instantiate(arrowprefab, new Vector3(px, 7, 0), Quaternion.identity);
         }
-        
+        */
     }
     public void DecreaseHp()
     {
